@@ -1,0 +1,8 @@
+generated: '2026-07-21'
+method: generated
+source: https://amusedco.com/llms.txt
+skills:
+  - file: thamarah-al-jill-co-llc-buy-preloved-luxury.md
+    name: Buy pre-loved luxury from AMUSED Co
+    api: mcp/thamarah-al-jill-co-llc-mcp.yml
+    operations: [search_catalog, create_cart, create_checkout, update_checkout, complete_checkout]

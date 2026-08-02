@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://amusedco.com/.well-known/ucp
+docs: https://amusedco.com/llms.txt
+summary: >-
+  AMUSED Co exposes an agent-native commerce surface via the Universal Commerce
+  Protocol (UCP, https://ucp.dev), served over MCP by the underlying Shopify
+  platform. The store's /.well-known/ucp profile advertises a UCP "dev.ucp.shopping"
+  service over MCP transport, plus an embedded transport. Checkout requires
+  contemporaneous human buyer approval; the endpoint is rate-limited per IP (back off
+  on HTTP 429). Tool schemas are the UCP OpenRPC documents referenced in the profile.
+server:
+  name: amused-ucp-shopping
+  protocol: Universal Commerce Protocol (UCP)
+  transport: http            # MCP over HTTP (JSON-RPC); an 'embedded' transport is also advertised
+  url: https://amusedco.com/api/ucp/mcp
+  staging_url: https://amused-staging.myshopify.com/api/ucp/mcp
+  supported_versions:
+    - '2026-04-08'          # latest stable
+    - '2026-01-23'
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+capabilities:
+  - dev.ucp.shopping.catalog.search
+  - dev.ucp.shopping.catalog.lookup
+  - dev.ucp.shopping.cart
+  - dev.ucp.shopping.checkout
+  - dev.ucp.shopping.fulfillment
+  - dev.ucp.shopping.discount
+  - dev.ucp.shopping.order
+  - dev.shopify.catalog
+# Tool names below are the documented UCP shopping flow published verbatim in
+# https://amusedco.com/llms.txt ("Typical Agent Flow"). Live tools/list could not
+# be enumerated here because the MCP POST endpoint is behind Cloudflare's bot
+# challenge for non-browser clients; schemas are authoritative at the UCP OpenRPC URL.
+tools:
+  - name: search_catalog
+    description: Find products matching the buyer's intent.
+    source: https://amusedco.com/llms.txt
+  - name: create_cart
+    description: Add desired items to a cart.
+    source: https://amusedco.com/llms.txt
+  - name: create_checkout
+    description: Start the purchase flow from a cart.
+    source: https://amusedco.com/llms.txt
+  - name: update_checkout
+    description: Set shipping address and method on a checkout.
+    source: https://amusedco.com/llms.txt
+  - name: complete_checkout
+    description: Finalize the purchase. Buyer must explicitly approve payment.
+    source: https://amusedco.com/llms.txt

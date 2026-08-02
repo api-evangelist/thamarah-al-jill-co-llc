@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: https://amusedco.com/.well-known/ucp
+standards:
+  - id: oidc-discovery
+    conforms: true
+    evidence: /.well-known/openid-configuration returns a valid OIDC discovery document (Shopify Customer Accounts).
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns valid authorization-server metadata.
+  - id: oauth2
+    conforms: true
+    evidence: authorization_code grant with PKCE (S256) advertised in discovery.
+  - id: pkce
+    conforms: true
+    evidence: code_challenge_methods_supported = [S256].
+  - id: ucp
+    conforms: true
+    evidence: /.well-known/ucp advertises Universal Commerce Protocol versions 2026-04-08 and 2026-01-23.
+  - id: mcp
+    conforms: true
+    evidence: dev.ucp.shopping service exposed over MCP transport at /api/ucp/mcp.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404.

@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: https://amusedco.com/llms.txt
+summary: >-
+  Cross-cutting agent-commerce semantics for the AMUSED Co store, as published in its
+  /llms.txt agent instructions and /.well-known/ucp profile. This is a UCP/MCP surface
+  over Shopify — not a REST API — so conventions are framed around the agent checkout
+  flow rather than resource CRUD.
+authentication:
+  style: Shopify Customer Accounts OIDC (authorization_code + PKCE)
+  ref: authentication/thamarah-al-jill-co-llc-authentication.yml
+buyer_approval:
+  required: true
+  rule: >-
+    Checkout requires contemporaneous human approval. Agents MUST NOT complete payment
+    without explicit buyer consent. Where contemporaneous approval is not possible,
+    the store directs agents to route the purchase through Shop Pay via the Shop skill
+    (https://shop.app/SKILL.md).
+rate_limiting:
+  signal: HTTP 429
+  guidance: The MCP endpoint is rate-limited per IP; back off on 429 responses.
+buyer_context:
+  params:
+    - context.address_country
+    - context.currency
+  guidance: Pass buyer context for accurate pricing and availability.
+idempotency:
+  documented: false
+  notes: No idempotency-key contract is published by the merchant surface.
+read_only_browsing:
+  auth_required: false
+  endpoints:
+    - 'GET /collections/all'
+    - 'GET /products/{handle}'
+    - 'GET /products/{handle}.json'
+    - 'GET /collections/{handle}'
+    - 'GET /collections/{handle}/products.json'
+    - 'GET /search?q={query}&type=product'
+    - 'GET /sitemap.xml'
+versioning:
+  scheme: date-based UCP versions
+  current: '2026-04-08'
+  supported: ['2026-04-08', '2026-01-23']
+cross_references:
+  authentication: authentication/thamarah-al-jill-co-llc-authentication.yml
+  scopes: scopes/thamarah-al-jill-co-llc-scopes.yml
+  mcp: mcp/thamarah-al-jill-co-llc-mcp.yml
+  lifecycle: lifecycle/thamarah-al-jill-co-llc-lifecycle.yml

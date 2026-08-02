@@ -1,8 +1,28 @@
 aid: thamarah-al-jill-co-llc
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/thamarah-al-jill-co-llc.png
 name: Thamarah Al-Jill Co LLC
-description: Thamarah Al-Jill Co LLC is a company surfaced as a portfolio company of 500-global and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Thamarah Al-Jill Co LLC operates AMUSED Co (amusedco.com), a Saudi Arabia-based online
+  marketplace for authenticated, curated pre-loved luxury — designer handbags and women's
+  clothing from houses such as Louis Vuitton, Hermes and Chanel at up to 70% off retail.
+  Under a "Resell, Rebuy, Relove" model, buyers shop verified second-hand pieces (backed by
+  a one-year authentication money-back guarantee) and sellers list their own unused items;
+  payment options include credit card, Mada and Tamara. The store is a 500 Global portfolio
+  company. It is built on Shopify and is fully agent-native: it publishes an /llms.txt agent
+  guide and implements the Universal Commerce Protocol (UCP) over an MCP endpoint, with
+  Shopify Customer Accounts OpenID Connect for buyer authentication.
 url: https://raw.githubusercontent.com/api-evangelist/thamarah-al-jill-co-llc/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +32,28 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- E-commerce
+- Marketplace
+- Luxury
+- Resale
+- Fashion
+- Agent Commerce
+- Shopify
+- Saudi Arabia
+apis:
+- name: AMUSED Co Commerce (UCP / MCP)
+  description: >-
+    Agent-driven commerce surface for the AMUSED Co store implemented with the Universal
+    Commerce Protocol (UCP) over MCP: catalog search/lookup, cart, checkout, fulfillment,
+    discount and order capabilities, with mandatory human buyer approval at payment.
+  humanURL: https://amusedco.com
+  baseURL: https://amusedco.com/api/ucp/mcp
+  properties:
+  - type: MCPServer
+    url: mcp/thamarah-al-jill-co-llc-mcp.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,3 +62,32 @@ maintainers:
 common:
 - type: Website
   url: https://amusedco.com
+- type: PrivacyPolicy
+  url: https://amusedco.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://amusedco.com/policies/terms-of-service
+- type: LLMsTxt
+  url: llms/thamarah-al-jill-co-llc-llms.txt
+- type: WellKnown
+  url: well-known/thamarah-al-jill-co-llc-well-known.yml
+- type: MCPServer
+  url: mcp/thamarah-al-jill-co-llc-mcp.yml
+- type: Authentication
+  url: authentication/thamarah-al-jill-co-llc-authentication.yml
+- type: OAuthScopes
+  url: scopes/thamarah-al-jill-co-llc-scopes.yml
+- type: Conformance
+  url: conformance/thamarah-al-jill-co-llc-conformance.yml
+- type: DomainSecurity
+  url: security/thamarah-al-jill-co-llc-domain-security.yml
+- type: Conventions
+  url: conventions/thamarah-al-jill-co-llc-conventions.yml
+- type: Lifecycle
+  url: lifecycle/thamarah-al-jill-co-llc-lifecycle.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1

@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: probed
+source: dig + TLS/HTTP HEAD against amusedco.com
+notes: >-
+  amusedco.com is served through Cloudflare (Shopify store). HSTS is present on
+  agent/discovery paths (max-age observed 7889238). The storefront root returns a
+  Cloudflare managed-challenge 403 to non-browser clients. Absence of CAA / DNSSEC
+  records is recorded as observed, not inferred.
+hosts:
+  - host: amusedco.com
+    https: true
+    behind: cloudflare
+    hsts: true
+    hsts_max_age: 7889238
+domains:
+  - domain: amusedco.com
+    nameservers: [stella.ns.cloudflare.com, quinton.ns.cloudflare.com]
+    dnssec: false
+    caa: []
+    spf: true
+    spf_record: 'v=spf1 ip4:66.96.128.0/18 include:_spf.google.com ~all'
+    dmarc: true
+    dmarc_policy: none
+    dmarc_rua: dmarc-reports@amusedco.com

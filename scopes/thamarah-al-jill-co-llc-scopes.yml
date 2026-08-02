@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: https://amusedco.com/.well-known/openid-configuration
+docs: https://amusedco.com/.well-known/openid-configuration
+schemes:
+  - name: shopify-customer-accounts-oidc
+    source: well-known/thamarah-al-jill-co-llc-openid-configuration.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://shopify.com/authentication/29798400044/oauth/authorize
+        tokenUrl: https://shopify.com/authentication/29798400044/oauth/token
+scopes:
+  - scope: openid
+    description: OpenID Connect authentication; issue an ID token for the buyer.
+    flows: [authorizationCode]
+  - scope: email
+    description: Access the buyer's email address claim.
+    flows: [authorizationCode]
+  - scope: customer-account-api:full
+    description: Full access to the Shopify Customer Account API on behalf of the signed-in buyer.
+    flows: [authorizationCode]
+  - scope: customer-account-mcp-api:full
+    description: Full access to the Customer Account MCP API — agent-facing customer-account operations.
+    flows: [authorizationCode]
