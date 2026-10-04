@@ -75,6 +75,9 @@ apis:
   properties:
   - type: MCPServer
     url: mcp/thamarah-al-jill-co-llc-mcp.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
